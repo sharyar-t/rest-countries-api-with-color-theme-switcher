@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+/* Тема переключается атрибутом data-theme на <html>, а не prefers-color-scheme */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme {
+  --font-sans: 'Nunito Sans', sans-serif;
+
+  --color-blue-900: hsl(209, 23%, 22%);
+  --color-blue-950: hsl(207, 26%, 17%);
+  --color-grey-950: hsl(200, 15%, 8%);
+  --color-grey-400: hsl(0, 0%, 50%);
+  --color-grey-50: hsl(0, 0%, 99%);
+}
+
+body {
+  @apply bg-grey-50 font-sans text-grey-950 dark:bg-blue-950 dark:text-white;
+}
+
+/* Нативные элементы (скроллбары, выпадающий список) следуют выбранной теме */
+html[data-theme='light'] {
+  color-scheme: light;
+}
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
